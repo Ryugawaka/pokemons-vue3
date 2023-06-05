@@ -1,12 +1,15 @@
 <template>
-  <div class="header" @click="$router.push('/')">
+  <div
+    class="header"
+    @click="$router.push('/')"
+  >
     <div class="logo-block">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
         alt="logo"
         class="logo"
       />
-      <p>PokeDB-VUE</p>
+      <p>{{ this.title }}</p>
     </div>
     <div class="searchBlock">
       <p class="title">Search by Name/id</p>
@@ -16,16 +19,17 @@
 </template>
 
 <script>
-import EventHandler from './EventHandler'
+import EventHandler from "./EventHandler";
 
 export default {
   name: "Header-bar",
   data() {
+    return { title: "PokeDB-VUE" };
   },
-  emits:['search'],
+  emits: ["search"],
   methods: {
     onSearch(e) {
-      EventHandler.emit('search', e.target.value)
+      EventHandler.emit("search", e.target.value);
     },
   },
 };
@@ -36,7 +40,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  height: 60px;
+  height: 5vw;
   background-color: gray;
   width: 100vw;
   display: flex;
@@ -58,7 +62,7 @@ export default {
 }
 .searchBlock {
   color: white;
-  font-size: 14px;
+  font-size: 1.2vw;
   margin-right: 40px;
 }
 .title {
@@ -66,8 +70,8 @@ export default {
   margin-bottom: 0;
 }
 .searchInput {
-  height: 20px;
-  width: 200px;
+  height: 1vw;
+  width: 15vw;
   outline: none;
 }
 </style>

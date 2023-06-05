@@ -1,6 +1,5 @@
 <template>
   <div class="test">
-    <!-- <button @click="getRes">Test</button> -->
     <div class="container">
       <div
         v-for="item in (!state.search  ?  state.pokemons : state.filteredPokemons)"
@@ -83,22 +82,24 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 140px;
-  height: 180px;
+  width: 9.4vw;
+  height: 13vw;
   padding: 5px;
   margin-right: 20px;
   margin-bottom: 20px;
   border: 1px solid black;
   background-color: #e0dbde;
   color: #0f067a;
+  overflow: hidden;
+  font-size: 1vw;
 }
 .card:hover {
   cursor: pointer;
   background-color: #da8edb;
 }
 .sprite {
-  width: 90px;
-  height: 90px;
+  width: 7vw;
+  height: 7vw;
 }
 .name {
   font-weight: 600;

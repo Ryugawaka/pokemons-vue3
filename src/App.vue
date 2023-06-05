@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderBar />
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
@@ -17,8 +17,7 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
-
+@import url("https://fonts.cdnfonts.com/css/pokemon-solid");
 
 html {
   background: rgb(2, 0, 36);
@@ -28,7 +27,7 @@ html {
     rgba(119, 9, 121, 1) 59%,
     rgba(255, 0, 93, 1) 100%
   );
-  font-family: 'Pokemon Solid', sans-serif;
+  font-family: "Pokemon Solid", sans-serif;
   letter-spacing: 0.2em;
 }
 </style>
