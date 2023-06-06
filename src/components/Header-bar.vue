@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="header"
-    @click="$router.push('/')"
-  >
-    <div class="logo-block">
+  <div class="header">
+    <div class="logo-block" @click="$router.push('/')">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
         alt="logo"
@@ -26,16 +23,13 @@ export default {
   data() {
     return { title: "PokeDB-VUE" };
   },
-  emits: ["search"],
-  computed: mapActions['filterPokemons'],
+  computed: mapActions["filterPokemons"],
   methods: {
     onSearch(e) {
-        this.$store.dispatch('filterPokemons', e.target.value)
+      this.$store.dispatch("filterPokemons", e.target.value);
     },
   },
-  mounted(){
-
-  }
+  mounted() {},
 };
 </script>
 
@@ -52,7 +46,6 @@ export default {
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  cursor: pointer;
 }
 .logo {
   width: 40px;
@@ -63,6 +56,7 @@ export default {
   align-items: center;
   color: white;
   font-size: 30px;
+  cursor: pointer;
 }
 .searchBlock {
   color: white;

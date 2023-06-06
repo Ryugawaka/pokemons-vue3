@@ -161,8 +161,8 @@ export default {
   margin-bottom: 20px;
 }
 .image {
-  width: 30vw;
-  height: 30vw;
+  width: 35vw;
+  height: 35vw;
 }
 .types {
   display: flex;
@@ -181,7 +181,7 @@ export default {
 }
 .stats {
   display: flex;
-  width: 400px;
+  width: 35vw;
   justify-content: space-between;
 }
 .evolveList {

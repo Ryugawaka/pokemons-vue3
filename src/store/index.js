@@ -1,6 +1,5 @@
 import Vuex from "vuex";
 import axios from "axios";
-// import EventHandler from "@/components/EventHandler";
 
 export default new Vuex.Store({
   state: {
