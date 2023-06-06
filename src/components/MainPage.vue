@@ -2,7 +2,7 @@
   <div class="test">
     <div class="container">
       <div
-        v-for="item in (!state.search  ?  state.pokemons : state.filteredPokemons)"
+        v-for="item in search === '' ? allPokemons : filteredPokemons"
         v-bind:key="item.id"
         class="card"
         @click="$router.push(`/${item.name}`)"
@@ -16,56 +16,18 @@
 </template>
 
 <script>
-import axios from "axios";
-import { onMounted, onUnmounted, reactive } from "vue";
-import EventHandler from "./EventHandler";
+import { mapGetters } from "vuex";
 
 export default {
   name: "MainPage",
-  data() {
-    const state = reactive({
-      filteredPokemons: [],
-      pokemons: [],
-      search: null,
-    });
-    return {
-      state,
-    };
-  },
+
+  computed: mapGetters(["allPokemons", 'filteredPokemons', 'search']),
   mounted() {
-    EventHandler.on("search", (data) => {
-      this.state.search = data;
-      this.filter();
-    });
+    this.$store.dispatch('getPokemons')
+    console.log(this.filteredPokemons.target);
+
   },
-  unmounted() {
-    onUnmounted(() => {
-      EventHandler.off("search");
-    });
-  },
-  async created() {
-    onMounted(async () => {
-      this.state.pokemons = [];
-      for (let i = 1; i < 152; i++) {
-        await axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-          .then((res) => {
-            this.state.pokemons.push(res.data);
-          });
-      }
-    });
-  },
-  // updated() {},
-  methods: {
-    filter() {
-      if (this.state.search) {
-        console.log(this.state.search);
-        this.state.filteredPokemons = this.state.pokemons.filter((el) =>
-          el.name.includes(this.state.search) || el.id == this.state.search
-        );
-      }
-    },
-  },
+
 };
 </script>
 

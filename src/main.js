@@ -3,6 +3,7 @@ import App from './App.vue'
 import MainPage from './components/MainPage.vue'
 import PokemonPage from './components/PokemonPage.vue'    
 import * as VueRouter from 'vue-router'
+import store from './store'
 
 
 const routes = [
@@ -17,5 +18,5 @@ const router = VueRouter.createRouter({
 
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(store).mount('#app')
 

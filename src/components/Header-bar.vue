@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import EventHandler from "./EventHandler";
+import { mapActions } from "vuex";
 
 export default {
   name: "Header-bar",
@@ -27,11 +27,15 @@ export default {
     return { title: "PokeDB-VUE" };
   },
   emits: ["search"],
+  computed: mapActions['filterPokemons'],
   methods: {
     onSearch(e) {
-      EventHandler.emit("search", e.target.value);
+        this.$store.dispatch('filterPokemons', e.target.value)
     },
   },
+  mounted(){
+
+  }
 };
 </script>
 

@@ -37,6 +37,11 @@
         >
           {{ evolutionChain.chain.species.name }}
         </div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/57/57116.png"
+          v-if="evolutionChain.chain['evolves_to'][0]"
+          class="arrow"
+        />
         <div v-if="evolutionChain.chain['evolves_to'][0]">
           <div
             v-for="(evolve, index) in evolutionChain.chain['evolves_to']"
@@ -47,6 +52,15 @@
             {{ evolve.species.name }}
           </div>
         </div>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/57/57116.png"
+          v-if="
+            evolutionChain.chain['evolves_to'][0] &&
+            evolutionChain.chain['evolves_to'][0]['evolves_to'][0]
+          "
+          class="arrow"
+        />
+
         <div
           v-if="
             evolutionChain.chain['evolves_to'][0] &&
@@ -147,8 +161,8 @@ export default {
   margin-bottom: 20px;
 }
 .image {
-  width: 300px;
-  height: 300px;
+  width: 30vw;
+  height: 30vw;
 }
 .types {
   display: flex;
@@ -185,5 +199,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   text-align: center;
-}   
+}
+.arrow {
+  width: 5vw;
+}
 </style>
