@@ -185,7 +185,7 @@ export default {
 }
 .stats {
   display: flex;
-  width: 30vw;
+  width: 33vw;
   justify-content: space-between;
 }
 .evolveList {

@@ -62,7 +62,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   width: 9.4vw;
-  height: 13vw;
+  height: 14vw;
   padding: 5px;
   margin-right: 20px;
   margin-bottom: 20px;
