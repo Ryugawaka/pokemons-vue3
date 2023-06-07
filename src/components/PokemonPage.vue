@@ -159,10 +159,12 @@ export default {
 .name {
   font-size: 25px;
   margin-bottom: 20px;
+  width: 50vw;
 }
 .image {
   width: 35vw;
   height: 35vw;
+  align-self: center;
 }
 .types {
   display: flex;
@@ -178,10 +180,12 @@ export default {
   padding-right: 40px;
   background-color: #6a0893;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .stats {
   display: flex;
-  width: 35vw;
+  width: 30vw;
   justify-content: space-between;
 }
 .evolveList {

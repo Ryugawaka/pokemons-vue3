@@ -29,5 +29,6 @@ html {
   );
   font-family: "Pokemon Solid", sans-serif;
   letter-spacing: 0.2em;
+  line-height: 1.3vw;
 }
 </style>
