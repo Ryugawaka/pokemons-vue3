@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="logo-block" @click="$router.push('/')">
+    <div class="logoBlock" @click="$router.push('/')">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
         alt="logo"
@@ -51,7 +51,7 @@ export default {
   width: 40px;
   height: 40px;
 }
-.logo-block {
+.logoBlock {
   display: flex;
   align-items: center;
   color: white;

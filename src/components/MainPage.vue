@@ -1,17 +1,16 @@
 <template>
-  <div class="test">
-    <div class="container">
-      <div
-        v-for="item in search === '' ? allPokemons : filteredPokemons"
-        v-bind:key="item.id"
-        class="card"
-        @click="$router.push(`/${item.name}`)"
-      >
-        <img :src="item.sprites['front_default']" class="sprite" />
-        <p class="name">{{ item.name }}</p>
-        <p class="id">id:{{ item.id }}</p>
-      </div>
+  <div class="container">
+    <div
+      v-for="item in search === '' ? allPokemons : filteredPokemons"
+      v-bind:key="item.id"
+      class="card"
+      @click="$router.push(`/${item.name}`)"
+    >
+      <img :src="item.sprites['front_default']" class="sprite" />
+      <p class="name">{{ item.name }}</p>
+      <p class="id">id:{{ item.id }}</p>
     </div>
+    <span ref="fetchMore"></span>
   </div>
 </template>
 
@@ -21,13 +20,32 @@ import { mapGetters } from "vuex";
 export default {
   name: "MainPage",
 
-  computed: mapGetters(["allPokemons", 'filteredPokemons', 'search']),
+  computed: mapGetters(["allPokemons", "filteredPokemons", "search"]),
   mounted() {
-    this.$store.dispatch('getPokemons')
-    console.log(this.filteredPokemons.target);
+    this.$store.dispatch("getPokemons");
 
+    this.allPokemons.length >= 1010
+      ? window.removeEventListener("scroll", this.checkVisibility)
+      : window.addEventListener("scroll", this.checkVisibility);
   },
-
+  unmounted() {
+    window.removeEventListener("scroll", this.checkVisibility);
+  },
+  methods: {
+    checkVisibility() {
+      const element = this.$refs.fetchMore;
+      if (this.allPokemons.length > 150 && this.allPokemons.length < 1010) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+          this.$store.dispatch("fetchMore");
+          window.removeEventListener("scroll", this.checkVisibility);
+          setTimeout(() => {
+            window.addEventListener("scroll", this.checkVisibility);
+          }, 3000);
+      }
+    }}
+  },
 };
 </script>
 

@@ -32,6 +32,18 @@ export default new Vuex.Store({
         }
       }
     },
+    async fetchMore(ctx) {
+        let more = this.state.pokemons.length + 100
+      for (let i = this.state.pokemons.length + 1; i < more; i++) {
+        if (i <= 1010) {
+          await axios
+            .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            .then((res) => {
+              ctx.commit("updatePokemons", res.data);
+            });
+        }
+      }
+    },
 
     filterPokemons(ctx, search) {
       ctx.commit("filter", search);
@@ -43,8 +55,8 @@ export default new Vuex.Store({
     },
     filteredPokemons(state) {
       return state.filteredPokemons;
-    }, 
-      search(state) {
+    },
+    search(state) {
       return state.search;
     },
   },
