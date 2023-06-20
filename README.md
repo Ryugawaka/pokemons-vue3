@@ -1,4 +1,4 @@
-# Pokemons-vue
+# Pokemon-vue
 
 ## Project setup
 ```
